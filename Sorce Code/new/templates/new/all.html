@@ -1,0 +1,32 @@
+{% extends 'new/base.html' %}
+
+{% block content %}
+<body>
+    <div style="background-color: #e9ecef;">
+        <a class="navbar-brand text-dark" style="margin-left: 30px;" href="{% url 'details_all' %}">All</a>
+        <a class="navbar-brand text-dark" style="margin-left: 10px;" href="{% url 'details_last' %}">Last</a>
+    </div>
+    <br>
+    <div class="feed_table">
+    <table class="table" border="default" style="table-layout: fixed;">
+        <tr>
+            <th>Engine_Size</th><th>Cylinders</th><th>Transmission</th>
+            <th>Fuel_Type</th><th>FC_City</th><th>FC_Hwy</th>
+            <th>FC_Comb_km</th>
+            <th>FC_Comb_mpg</th><th>CO2_Emission_Rating</th>
+            </tr>
+        {% for i in model %}
+        
+        <tr>
+            <td>{{i.Engine_Size}}</td><td>{{i.Cylinders}}</td>
+            <td>{{i.Transmission}}</td><td>{{i.Fuel_Type}}</td>
+            <td>{{i.FC_City}}</td><td>{{i.FC_Hwy}}</td>
+            <td>{{i.FC_Comb_km}}</td><td>{{i.FC_Comb_mpg}}</td>
+            <td>{{i.CO2_Emission_Rating}}</td>
+        </tr>
+        {% endfor %}
+</table>
+</div>
+{% endblock content %}
+</body>
+</html>
