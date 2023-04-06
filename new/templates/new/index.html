@@ -1,0 +1,62 @@
+{% extends 'new/base.html' %}
+{% load static %}
+
+
+	
+	{% block content %}
+	<body class="index">
+	<div>
+		<div style="background-color: #e9ecef;">
+		<a class="navbar-brand text-dark" style="margin-left: 30px;" href="{% url 'apredict' %}">Enter Details</a>
+		<a class="navbar-brand text-dark" style="margin-left: 1088px;" href="{% url 'feedback' %}">Feedback</a>
+	</div><br>
+	<h1 style="text-align:center; color:cyan;"><b>CO2 EMISSION RATING BY VEHICLES USING DATA SCIENCE TECHNIQUE</b></h1>
+     <!-- Main Input For Receiving Query to our ML -->
+
+	 <form class="form1 container1" action="{% url 'predict' %}" style="background-color: transparent; box-sizing: border-box;
+	 font-family: proxima_nova_rgregular, Helvetica, Arial, sans-serif;" method="POST">
+	 {% csrf_token %}
+		 <fieldset class="fieldset1">
+			 <legend class="legend1">Enter the Detail</legend>
+
+	 <label class="white"  for=""> Engine_Size </label>
+	 <input type="number" class="space form-control" step="0.01" name="Engine_Size" placeholder="Engine_Size" required="required" /><br><br>
+
+	 <label class="white"  for=""> Cylinders </label>
+	 <input type="number" class="space form-control" step="0.01" name="Cylinders" placeholder="Cylinders" required="required" /><br><br>
+
+	 <label class="white"  for=""> Transmission </label>
+	 <input type="number" class="space form-control" step="0.01" name="Transmission" placeholder="Transmission" required="required" /><br><br>
+
+	 <label class="white"  for=""> Fuel_Type </label>
+	 <input type="number" class="space form-control" step="0.01" name="Fuel_Type" placeholder="Fuel_Type" required="required" /><br><br>
+
+	 <label class="white"  for=""> FC_City </label>
+	 <input type="number" class="space form-control" step="0.01" name="FC_City" placeholder="FC_City" required="required" /><br><br>
+
+	 <label class="white"  for=""> FC_Hwy </label>
+	 <input type="number" class="space form-control" step="0.01" name="FC_Hwy" placeholder="FC_Hwy" required="required" /><br><br>
+
+	 <label class="white"  for=""> FC_Comb_km </label>
+	 <input type="number" class="space form-control" step="0.01" name="FC_Comb_km" placeholder="FC_Comb_km" required="required" /><br><br>
+
+	 <label class="white"  for=""> FC_Comb_mpg </label>
+	 <input type="number" class="space form-control" step="0.01" name="FC_Comb_mpg" placeholder="FC_Comb_mpg" required="required" /><br><br>
+
+	 <input type="hidden" name="CO2_Emission_Rating" value="data">
+	 <input class="input1" type="submit" value="Submit"><br>
+		 </fieldset>
+	 </form>
+
+
+   <br>
+   <br>
+<div  style="background:skyblue;padding:2% 40%">
+   <p><h4 style="color: green;">{{ prediction_text1 }}</p></h4>
+   <p>{{ prediction_text2 }}</p>
+</div>
+ </div>
+
+ {% endblock content %}
+</body>
+</html>
